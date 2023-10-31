@@ -1,0 +1,33 @@
+@api = http://localhost:3100
+### Mostrar lista de productos
+GET {{ api }}/products/
+
+### Guardar un nuevo producto
+POST {{ api }}/products
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjU0MzIyMiwidXNlciI6ImVtaWx5ZGF2aXMiLCJsZXZlbCI6MSwiZXhwIjoxNjk4MTYxNjcwNTk5LCJpYXQiOjE2OTgxNjE2MTB9.baRWZOb4l4sHPvejyOm7x3n3eh6vJ1knWJ5QHb3qHbo
+
+{
+    "id": 21,
+    "name": "Sensor de Movimiento",
+    "type": "sensor",
+    "description": "Sensor De Movimiento Para Reflectores 1200w Alcance 10metros",
+    "price": 7976
+}
+
+### Obtner datos de un producto por id
+PATCH {{ api }}/products/22
+Content-Type: application/json
+
+{
+    "type": "plaque"
+}
+
+### Obtner datos de un producto por id
+DELETE {{ api }}/products/21
+
+### Obtner datos de un producto por id
+GET {{ api }}/products/7
+
+### Obtener el precio de un producto por id
+GET {{ api }}/products/7/price

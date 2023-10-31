@@ -1,0 +1,36 @@
+@api = http://localhost:3100
+
+### Mostrar lista de usuarios
+GET {{ api }}/users/
+
+### Crear un nuevo usuario 
+POST {{ api }}/users
+Content-Type: application/json
+
+{
+  "role": "provider",
+  "name": "Oscar Salazar",
+  "email": "oscarsalazar@gmail.com",
+  "telephone": "6904440111",
+  "username": "oslazar",
+  "password": "salazar123"
+}
+
+
+### Actualizar algunos datos de usuario por id 
+PATCH {{ api }}/users/25
+Content-Type: application/json
+
+{
+  "role": "provider"
+}
+
+### Eliminar a un usuario por id 
+DELETE {{ api }}/users/22
+
+
+### Mostrar datos de un usuario por id
+GET {{ api }}/users/9
+
+### Mostrar el nombre del usuario por id 
+GET {{ api }}/users/10/name
