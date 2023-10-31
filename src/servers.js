@@ -1,9 +1,8 @@
 import express from 'express';
 import db from './db/connection.js';
 
-// import authenticate from './middlewares/authenticate.js';
-// import makeBody from './middlewares/makeBody.js';
-// import tokenAuthorization from './middlewares/tokenAuthorization.js';
+import authenticate from './middlewares/authenticate.js';
+import makeBody from './middlewares/makeBody.js';
 
 import userRouter from './routes/user.routes.js';
 import productRouter from './routes/product.routes.js';
@@ -12,9 +11,9 @@ const app = express();
 const expossedPort = process.env.PORT || 3100;
 
 // Middlewares
-// app.post('/', authenticate);
-// app.use(makeBody);
-// app.use(tokenAuthorization);
+app.use(makeBody);
+
+app.post('/auth', authenticate);
 
 // Routes
 app.use('/', userRouter);

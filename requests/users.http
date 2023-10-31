@@ -27,6 +27,7 @@ Content-Type: application/json
 
 ### Eliminar a un usuario por id 
 DELETE {{ api }}/users/22
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjE4LCJ1c2VyIjoicGVkcm9sb3BleiIsInJvbGUiOiJwcm92aWRlciIsImV4cCI6MTY5ODczODg5NzM4MywiaWF0IjoxNjk4NzM4ODM3fQ.kdIHXKsjsXUc1DMHrvSZm_V0gNZSmKw7lJ77kP9_SL8
 
 
 ### Mostrar datos de un usuario por id
@@ -34,3 +35,12 @@ GET {{ api }}/users/9
 
 ### Mostrar el nombre del usuario por id 
 GET {{ api }}/users/10/name
+
+### Autenticar un usuario
+POST {{ api }}/users/auth
+Content-Type: application/json
+
+{
+  "username": "pedrolopez",
+  "password": "lopez012"
+}

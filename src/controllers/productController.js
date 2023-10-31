@@ -95,3 +95,14 @@ export async function getProductById(req, res) {
   }
 };
 
+
+export async function getProductPriceById(req, res) {
+  const productId = parseInt(req.params.id);
+	try {
+		const productPrice = await Product.findByPk(productId);
+		const price = productPrice.price;
+		res.json({ price });
+	} catch (error) {
+		res.status(204).json({ message:'Producto no encontrado' });
+	}
+};

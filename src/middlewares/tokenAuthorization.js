@@ -3,7 +3,7 @@ import jwt from 'jsonwebtoken';
 
 function tokenAuthorization(req, res, next) {
 	const headerAuthorization = req.headers['authorization'];
-	const recdToken = headerAuthorization.split('')[1];
+	const recdToken = headerAuthorization.split(' ')[1];
 
 	if (recdToken == null){
 		return res.status(401).json({ message: 'Token inválido' });
