@@ -17,7 +17,7 @@ productRouter.delete('/products/:id', deleteProduct);
 
 productRouter.get('/products/:id', getProductById);
 productRouter.get('/products/:id/price', getProductPriceById);
-//productRouter.get('/products/totalPriceStock', getTotalPriceStock);
+// productRouter.get('/products/:totalPriceStock', getTotalPriceStock);
 
 // ruta para las relacione, ejemplo
 // router.get("/:id/tasks", getProjectTasks);

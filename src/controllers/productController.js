@@ -1,5 +1,6 @@
 import Product from '../models/product.js';
 
+
 export async function getAllProducts(req, res) {
     try {
       const products = await Product.findAll({
@@ -8,7 +9,8 @@ export async function getAllProducts(req, res) {
           'name', 
           'type', 
           'description', 
-          'price'
+          'price',
+          'id_provider'
         ],
       });
       res.json(products);
@@ -58,11 +60,11 @@ export const updateProduct = async (req, res) => {
     req.on('end', async () => {
       const data = JSON.parse(bodyTemp);
       req.body = data;
-        
-      await producToUpdate.update(req.body);
-    });
 
-    return res.status(200).send('Producto actualizado');
+      await producToUpdate.update(req.body);
+      return res.status(200).send('Producto actualizado');
+
+    });
       
   } catch (error) {
     return res.status(204).json({ message: 'Producto no encontrado' });

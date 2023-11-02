@@ -1,5 +1,6 @@
 import { DataTypes } from 'sequelize';
 import db from '../db/connection.js';
+import Cart from './cart.js';
 
 const Client = db.define(
     'client',
@@ -31,5 +32,8 @@ const Client = db.define(
 		tableName: 'clients'
     }
 );
+
+Client.hasOne(Cart, { foreinkey: "id_client", sourceKey: "id" });
+Cart.belongsTo(Client, { foreinkey: "id_cart", targetId: "id" });
 
 export default Client;

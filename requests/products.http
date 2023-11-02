@@ -16,11 +16,11 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjU0MzIyMiwid
 }
 
 ### Obtner datos de un producto por id
-PATCH {{ api }}/products/22
+PATCH {{ api }}/products/1
 Content-Type: application/json
 
 {
-    "type": "plaque"
+    "id_provider": 2
 }
 
 ### Obtner datos de un producto por id
@@ -31,3 +31,6 @@ GET {{ api }}/products/7
 
 ### Obtener el precio de un producto por id
 GET {{ api }}/products/7/price
+
+### Obtener precio total del stock
+GET {{ api }}/products/totalPriceStock

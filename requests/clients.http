@@ -1,0 +1,28 @@
+@api = http://localhost:3100
+
+### Mostrar lista de carrito
+GET {{ api }}/clients/
+
+### Mostrar lista de carrito
+POST {{ api }}/clients
+Content-Type: application/json
+
+{
+  "id": 6,
+  "name": "Emily Davis",
+  "email": "emilydavis@email.com",
+  "telephone": "4221117878",
+  "username": "emilydavis",
+  "password": "davis878"
+}
+
+### Actualizar algunos datos de usuario por id 
+PATCH {{ api }}/clients/4
+Content-Type: application/json
+
+{
+  "email": "janesmith@email.com"
+}
+
+### Eliminar a un usuario por id 
+DELETE {{ api }}/clients/6

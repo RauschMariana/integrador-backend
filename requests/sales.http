@@ -1,1 +1,10 @@
 @api = http://localhost:3100
+
+### Mostrar lista de ventas
+GET {{ api }}/sales
+
+### Mostrar datos de una venta
+GET {{ api }}/sales/5
+
+### borrar carrito
+DELETE {{ api }}/sales/2

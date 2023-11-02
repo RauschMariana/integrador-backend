@@ -1,5 +1,6 @@
 import { DataTypes } from 'sequelize';
 import db from '../db/connection.js';
+import Product from './product.js';
 
 const Provider = db.define(
     'provider',

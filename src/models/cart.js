@@ -4,26 +4,25 @@ import db from '../db/connection.js';
 const Cart = db.define(
     'cart',
     {
-        id_cart: {
+        id: {
             type: DataTypes.INTEGER,
-            primaryKey: true
+            primaryKey: true,
+            autoIncrement: true,
+			field: 'id',
         },
         quantity: {
             type: DataTypes.INTEGER
         },
-        id_user: {
-            type: DataTypes.INTEGER,
-            foreignKey: true,
+        price: {
+            type: DataTypes.REAL
         },
-        id_product: {
-            type: DataTypes.INTEGER,
-            foreignKey: true,
-        }
     },
     {
         timestamps: false,
         tableName: 'carts'
     }
 );
+
+//Cart.belongsTo(Sale, { foreinkey: "id_cart", sourceKey: "id" });
 
 export default Cart;

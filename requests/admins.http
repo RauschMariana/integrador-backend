@@ -1,0 +1,31 @@
+@api = http://localhost:3100
+
+### Mostrar lista de administradores
+GET {{ api }}/admins
+
+### Mostrar datos de un administrador por id
+GET {{ api }}/admins/5
+
+## Crear un nuevo administrador
+POST {{ api }}/admins
+Content-Type: application/json
+
+{
+  "id": 2,
+  "name": "",
+  "email": "",
+  "telephone": "",
+  "username": "",
+  "password": ""
+}
+
+### Actualizar algunos datos de algun administrador por id 
+PATCH {{ api }}/admins/4
+Content-Type: application/json
+
+{
+  "email": "janesmith@email.com"
+}
+
+### borrar un administrador por id
+DELETE {{ api }}/admins/2

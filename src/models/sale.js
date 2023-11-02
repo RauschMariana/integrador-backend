@@ -4,20 +4,16 @@ import db from '../db/connection.js';
 const Sale = db.define(
     'sale',
     {
-        id_sale: {
+        id: {
             type: DataTypes.INTEGER,
-            primaryKey: true
-        },
-        id_user: {
-            type: DataTypes.INTEGER
-        },
-        id_methodPeyment: {
-            type: DataTypes.INTEGER
+            primaryKey: true,
+            autoIncrement: true,
+			field: 'id',
         },
         quantity: {
             type: DataTypes.INTEGER
         },
-        total: {
+        total_price: {
             type: DataTypes.REAL
         }
     },
