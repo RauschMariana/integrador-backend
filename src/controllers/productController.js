@@ -5,12 +5,12 @@ export async function getAllProducts(req, res) {
     try {
       const products = await Product.findAll({
         atributes: [
-          'id', 
+          'id',
+          'id_provider',
           'name', 
           'type', 
           'description', 
-          'price',
-          'id_provider'
+          'price'
         ],
       });
       res.json(products);

@@ -23,6 +23,4 @@ const Cart = db.define(
     }
 );
 
-//Cart.belongsTo(Sale, { foreinkey: "id_cart", sourceKey: "id" });
-
 export default Cart;

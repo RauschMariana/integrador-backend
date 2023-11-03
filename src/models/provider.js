@@ -33,4 +33,6 @@ const Provider = db.define(
     }
 );
 
+Provider.hasMany(Product, { foreignKey: 'id_provider', sourceKey: 'id' });
+
 export default Provider;

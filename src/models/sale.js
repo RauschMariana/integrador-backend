@@ -10,10 +10,7 @@ const Sale = db.define(
             autoIncrement: true,
 			field: 'id',
         },
-        quantity: {
-            type: DataTypes.INTEGER
-        },
-        total_price: {
+        total: {
             type: DataTypes.REAL
         }
     },

@@ -3,8 +3,8 @@ import Sale from '../models/sale.js';
 export const getAllSales = async (req, res) => {
     try {
       const sales = await Sale.findAll({
-        attributes: ["id", "id_client","id_cart", "id_admin", "quantity", "total_price"],
-        order: [["id", "DESC"]],
+        attributes: ["id", "id_admin", "id_cart", "quantity", "total"],
+        // order: [["id", "DESC"]],
       });
       res.json(sales);
     } catch (error) {
@@ -17,7 +17,7 @@ export const getAllSales = async (req, res) => {
     try {
       const sale = await Sale.findOne({
         where: { id },
-        attributes: ["id", "id_client","id_cart", "id_admin", "quantity", "total_price"],
+        attributes: ["id", "id_admin" , "id_cart", "quantity", "total"],
       });
       res.json(sale);
     } catch (error) {
