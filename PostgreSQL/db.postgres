@@ -1,0 +1,224 @@
+CREATE TABLE users (
+    id serial PRIMARY KEY,
+    role VARCHAR (20),
+    name VARCHAR (20),
+    email VARCHAR (30),
+    telephone VARCHAR (20),
+    username VARCHAR (20),
+    password VARCHAR (20)
+);
+
+CREATE TABLE clients (
+    id serial PRIMARY KEY,
+    name VARCHAR (30),
+    email VARCHAR (30),
+    telephone VARCHAR (10),
+    username VARCHAR (20),
+    password VARCHAR (20)
+);
+
+CREATE TABLE providers (
+    id serial PRIMARY KEY,
+    name VARCHAR (30),
+    email VARCHAR (30),
+    telephone VARCHAR (10),
+    username VARCHAR (20),
+    password VARCHAR (20)
+);
+
+CREATE TABLE admins (
+    id serial PRIMARY KEY,
+    name VARCHAR (30),
+    email VARCHAR (30),
+    telephone VARCHAR (10),
+    username VARCHAR (20),
+    password VARCHAR (20)
+);
+
+CREATE TABLE products (
+    id serial PRIMARY KEY,
+    id_provider INTEGER,
+    name VARCHAR (50),
+    type VARCHAR (20),
+    description VARCHAR (100),
+    price real,
+    constraint FK_id_provider foreign key (id_provider) references providers(id)
+);
+
+CREATE TABLE carts (
+    id serial PRIMARY KEY,
+    id_client INTEGER,
+    id_product INTEGER,
+    quantity INTEGER,
+    price Real,
+    constraint FK_id_client foreign key (id_client) references clients(id)
+);
+
+CREATE TABLE sales (
+    id serial PRIMARY KEY,
+    id_cart INTEGER,
+    id_admin INTEGER,
+    total REAL,
+    constraint FK_id_admin foreign key (id_admin) references admins(id),
+    constraint FK_id_cart foreign key (id_cart) references carts(id)
+);
+
+insert into users (role, name, email, telephone, username, password)
+values ('client', 'John Doe', 'johndoe@email.com', '1234567890', 'johndoe', 'doe809');
+insert into users (role, name, email, telephone, username, password)
+values ('client', 'Jane Smith', 'janesmith@email.com', '9876543210', 'janesmith', 'smith210');
+insert into users (role, name, email, telephone, username, password)
+values ('client', 'Michael Johnson', 'michaeljohnson@email.com', '5662495318', 'michaeljohnson', 'johnson318');
+insert into users (role, name, email, telephone, username, password)
+values ('provider', 'Santiago Ortiz', 'santiagoortiz@email.com', '7890123456', 'santiagoortiz', 'ortiz456');
+insert into users (role, name, email, telephone, username, password)
+values ('client', 'Emily Davis', 'emilydavis@email.com', '4221117878', 'emilydavis', 'davis878');
+insert into users (role, name, email, telephone, username, password)
+values ('client', 'Daniel Wilson', 'danielwilson@email.com', '9009099999', 'danielwilson', 'wilson999');
+insert into users (role, name, email, telephone, username, password)
+values ('admin', 'David Ramírez', 'davidramirez@email.com', '5551234567', 'davidramirez', 'ramirez567');
+insert into users (role, name, email, telephone, username, password)
+values ('client', 'Olivia Taylor', 'oliviataylor@email.com', '7770198403', 'oliviataylor', 'taylor403');
+insert into users (role, name, email, telephone, username, password)
+values ('provider', 'Juan Pérez', 'juanperez@email.com', '0987654321', 'juanperez', 'perez321');
+insert into users (role, name, email, telephone, username, password)
+values ('client', 'David Martinez', 'davidmartinez@email.com', '2982122000', 'davidmartinez', 'martinez000');
+insert into users (role, name, email, telephone, username, password)
+values ('client', 'Sophia Anderson', 'sophiaanderson@email.com', '0800827588', 'sophiaanderson', 'anderson588');
+insert into users (role, name, email, telephone, username, password)
+values ('client', 'Joseph Thomas', 'josephthomas@email.com', '3431398080', 'josephthomas', 'thomas080');
+insert into users (role, name, email, telephone, username, password)
+values ('provider', 'Miguel Torres', 'migueltorres@email.com', '2345678901', 'migueltorres', 'torres901');
+insert into users (role, name, email, telephone, username, password)
+values ('client', 'Ava Garcia', 'avagarcia@email.com', '6126346578', 'avagarcia', 'garcia578');
+insert into users (role, name, email, telephone, username, password)
+values ('client', 'Jacob Hernandez', 'jacobhernandez@email.com', '4142434444', 'jacobhernandez', 'hernandez444');
+insert into users (role, name, email, telephone, username, password)
+values ('admin', 'Laura Suarez', 'laurasuarez@email.com', '9876543210', 'laurasuarez', 'suarez210');
+insert into users (role, name, email, telephone, username, password)
+values ('client', 'Mia Lopez', 'mialopez@email.com', '2345678901', 'mialopez', 'lopez901');
+insert into users (role, name, email, telephone, username, password)
+values ('provider', 'Pedro López', 'pedrolopez@email.com', '3456789012', 'pedrolopez', 'lopez012');
+insert into users (role, name, email, telephone, username, password)
+values ('client', 'William Clark', 'williamclark@email.com', '1098765432', 'williamclark', 'clark432');
+insert into users (role, name, email, telephone, username, password)
+values ('admin', 'Amanda Becker', 'amandabecker@email.com', '1112223333', 'amandabecker', 'becker333');
+insert into users (role, name, email, telephone, username, password)
+values ('client', 'Sofia Rodriguez', 'sofiarodriguez@email.com', '9439219456', 'sofiarodriguez', 'rodriguez456');
+insert into users (role, name, email, telephone, username, password)
+values ('client', 'Benjamin Lee', 'benjaminlee@email.com', '8978568431', 'benjaminlee', 'lee431');
+insert into users (role, name, email, telephone, username, password)
+values ('provider', 'César Álvila', 'cesaravila@email.com', '4567890123', 'cesaravila', 'avila123');
+
+insert into clients (name, email, telephone, username, password)
+values ('John Doe', 'johndoe@email.com', '1234567890', 'johndoe', 'doe809');
+insert into clients (name, email, telephone, username, password)
+values ('Jane Smith', 'janesmith@email.com', '9876543210', 'janesmith', 'smith210');
+insert into clients (name, email, telephone, username, password)
+values ('Michael Johnson', 'michaeljohnson@email.com', '5662495318', 'michaeljohnson', 'johnson318');
+insert into clients (name, email, telephone, username, password)
+values ('Emily Davis', 'emilydavis@email.com', '4221117878', 'emilydavis', 'davis878');
+insert into clients (name, email, telephone, username, password)
+values ('Daniel Wilson', 'danielwilson@email.com', '9009099999', 'danielwilson', 'wilson999');
+insert into clients (name, email, telephone, username, password)
+values ('Olivia Taylor', 'oliviataylor@email.com', '7770198403', 'oliviataylor', 'taylor403');
+insert into clients (name, email, telephone, username, password)
+values ('David Martinez', 'davidmartinez@email.com', '2982122000', 'davidmartinez', 'martinez000');
+insert into clients (name, email, telephone, username, password)
+values ('Sophia Anderson', 'sophiaanderson@email.com', '0800827588', 'sophiaanderson', 'anderson588');
+insert into clients (name, email, telephone, username, password)
+values ('Joseph Thomas', 'josephthomas@email.com', '3431398080', 'josephthomas', 'thomas080');
+insert into clients (name, email, telephone, username, password)
+values ('Ava Garcia', 'avagarcia@email.com', '6126346578', 'avagarcia', 'garcia578');
+insert into clients (name, email, telephone, username, password)
+values ('Jacob Hernandez', 'jacobhernandez@email.com', '4142434444', 'jacobhernandez', 'hernandez444');
+insert into clients (name, email, telephone, username, password)
+values ('Mia Lopez', 'mialopez@email.com', '2345678901', 'mialopez', 'lopez901');
+insert into clients (name, email, telephone, username, password)
+values ('William Clark', 'williamclark@email.com', '1098765432', 'williamclark', 'clark432');
+insert into clients (name, email, telephone, username, password)
+values ('Sofia Rodriguez', 'sofiarodriguez@email.com', '9439219456', 'sofiarodriguez', 'rodriguez456');
+insert into clients (name, email, telephone, username, password)
+values ('Benjamin Lee', 'benjaminlee@email.com', '8978568431', 'benjaminlee', 'lee431');
+
+insert into providers (name, email, telephone, username, password)
+values ('Santiago Ortiz', 'santiagoortiz@email.com', '7890123456', 'santiagoortiz', 'ortiz456');
+insert into providers (name, email, telephone, username, password)
+values ('César Álvila', 'cesaravila@email.com', '4567890123', 'cesaravila', 'avila123');
+insert into providers (name, email, telephone, username, password)
+values ('Pedro López', 'pedrolopez@email.com', '3456789012', 'pedrolopez', 'lopez012');
+insert into providers (name, email, telephone, username, password)
+values ('Miguel Torres', 'migueltorres@email.com', '2345678901', 'migueltorres', 'torres901');
+insert into providers (name, email, telephone, username, password)
+values ('Juan Pérez', 'juanperez@email.com', '0987654321', 'juanperez', 'perez321');
+
+insert into admins (name, email, telephone, username, password)
+values ('Amanda Becker', 'amandabecker@email.com', '1112223333', 'amandabecker', 'becker333');
+insert into admins (name, email, telephone, username, password)
+values ('Laura Suarez', 'laurasuarez@email.com', '9876543210', 'laurasuarez', 'suarez210');
+insert into admins (name, email, telephone, username, password)
+values ('David Ramírez', 'davidramirez@email.com', '5551234567', 'davidramirez', 'ramirez567');
+
+insert into products (id_provider, name, type, description, price)
+values (1, 'Cable de red Lan Ethernet', 'Cable', '10 metros Internet Ps4 Pc Cat 5e', 1311.01);
+insert into products (id_provider, name, type, description, price)
+values (1, 'Cables Pinza Cocodrilo', 'Cable', 'Juego de 5 cables Conectores Clips Arduino', 1339.01);
+insert into products (id_provider, name, type, description, price)
+values (1,'Cable Bipolar', 'Cable', 'De 0,5mm 24 Awg Rojo y Negro Tira Led x50m', 4907.01);
+insert into products (id_provider, name, type, description, price)
+values (1, 'Cable Para Funte Modular', 'Cable', 'Pcie 6 Pin a Sata Gigabyte Mineria', 1849.01);
+insert into products (id_provider, name, type, description, price)
+values (2, 'Plaqueta Placa de Lavarropas', 'Placa', 'Patrick Lpk 06 Lpk06e10', 20800.01);
+insert into products (id_provider, name, type, description, price)
+values (2, 'Protoboard', 'Placa', 'Placa Circuito de Pruebas 830 puntos Arduino', 1799.01);
+insert into products (id_provider, name, type, description, price)
+values (2, 'Plaqueta Experimental', 'Placa', '9cm x 7cm Simple Faz Arduino Nubbeo', 1007.01);
+insert into products (id_provider, name, type, description, price)
+values (2, 'Placa Adaptador Set x8', 'Placa', 'Adaptador Sop8 Soic8 Tssp8 a Dip8', 2699.01);
+insert into products (id_provider, name, type, description, price)
+values (3,'Batería Recargable', 'Batería', '12v 7ah (es de 7.2ah) Kaise Ups Alarma', 9629.01);
+insert into products (id_provider, name, type, description, price)
+values (3, 'Pila Batería Recargable x5', 'Batería', '14500 Motoma 3.7v 800 Mah Real', 13599.01);
+insert into products (id_provider, name, type, description, price)
+values (3, 'Pila Alcalina', 'Batería', 'Batería 9v Blister x 1 ud Sica 915315', 1314.01);
+insert into products (id_provider, name, type, description, price)
+values (3, 'Batería De Gel', 'Batería', '12v - 2.2Ah - Vapex 70x48x99mm Ct1222', 8085.01);
+insert into products (id_provider, name, type, description, price)
+values (4, 'Tubo Led', 'Luz', '150cm 25w Blanco Calido 3000k Macroled', 2099.01);
+insert into products (id_provider, name, type, description, price)
+values (4,'Tira de luces led', 'Luz', '2mts Blanca Fria Adhesiva a pila flexible', 1700.01);
+insert into products (id_provider, name, type, description, price)
+values (4, 'Manguera Luces Neon Led', 'Luz', '220v Flexible 7mts Ip65 7colores Rgb', 12001.01);
+insert into products (id_provider, name, type, description, price)
+values (4, 'Pack 100 Leds', 'Luz', '3mm Led Rojo Amarillo Verde Azul Blanco', 2759.01);
+insert into products (id_provider, name, type, description, price)
+values (5, 'Sensor Temperatura', 'Sensor', 'Sumergible Ds18b20 Arduino Todomicro', 1399.01);
+insert into products (id_provider, name, type, description, price)
+values (5, 'Sensor Ultrasonico', 'Sensor', 'Ultrasonido Hc-sr04 Arduino Pic Robótica', 1099.01);
+insert into products (id_provider, name, type, description, price)
+values (5, 'Sensor Temperatura',  'Sensor', 'Modulo Terminal Ky-028 3pin Arduino Hexero', 1199.01);
+insert into products (id_provider, name, type, description, price)
+values (5,'Sensor Temperatura y Humedad Led', 'Sensor', 'Modulo Dht11', 1129.01);
+
+insert into carts (id_client, id_product, quantity, price)
+values (3, 5, 1, 20800.02);
+insert into carts (id_client, id_product, quantity, price)
+values (9, 2, 2, 2678.01);
+insert into carts (id_client, id_product, quantity, price)
+values (10, 6, 3, 5397.03);
+insert into carts (id_client, id_product, quantity, price)
+values (7, 14, 1, 1700.01);
+insert into carts (id_client, id_product, quantity, price)
+values (4, 20, 2, 2258.02);
+
+insert into carts (quantity, price, id_client)
+values (2, 2799.01, 9);
+
+insert into sales (id_admin, id_cart, total)
+values (2, 1, 20800.01);
+insert into sales (id_admin, id_cart, total)
+values (3, 4, 1700.01);
+insert into sales (id_admin, id_cart, total)
+values (1, 3, 5397.03);
+insert into sales (id_admin, id_cart, total)
+values (2, 5, 2258.02);
