@@ -1,5 +1,6 @@
 import Cart from '../models/cart.js';
 import Client from '../models/client.js';
+import Product from '../models/product.js';
 
 export async function getAllClients(req, res) {
     try {
@@ -78,19 +79,6 @@ export async function deleteClient(req, res) {
     
   } catch (error) {
     return res.status(204).json({ message: 'Cliente no encontrado' });
-  }
-};
-
-export async function getClientCart(req, res) {
-  const { id } = req.params;
-  try {
-    const carts = await Cart.findAll({
-      attributes: ["id", "id_client", "id_product", "quantity", "price"],
-      where: { id_client: id },
-    });
-    res.json(carts);
-  } catch (error) {
-    return res.status(500).json({ message: error.message });
   }
 };
 

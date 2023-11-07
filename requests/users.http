@@ -27,14 +27,14 @@ Content-Type: application/json
 
 ### Eliminar a un usuario por id 
 DELETE {{ api }}/users/22
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjE4LCJ1c2VyIjoicGVkcm9sb3BleiIsInJvbGUiOiJwcm92aWRlciIsImV4cCI6MTY5ODczODg5NzM4MywiaWF0IjoxNjk4NzM4ODM3fQ.kdIHXKsjsXUc1DMHrvSZm_V0gNZSmKw7lJ77kP9_SL8
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQxLCJ1c2VyIjoicGVkcm9sb3BleiIsInJvbGUiOiJwcm92aWRlciIsImV4cCI6MTY5OTMxNDI2NTM0NywiaWF0IjoxNjk5MzE0MjA1fQ.I7qzVqPhDAZqU0cthJpE4-kRonuu78Ja7sPmGkUHHlw
 
 
 ### Mostrar datos de un usuario por id
-GET {{ api }}/users/9
+GET {{ api }}/users/24
 
 ### Mostrar el nombre del usuario por id 
-GET {{ api }}/users/10/name
+GET {{ api }}/users/26/name
 
 ### Autenticar un usuario
 POST {{ api }}/users/auth

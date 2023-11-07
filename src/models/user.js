@@ -11,7 +11,7 @@ const User = db.define(
 			field: 'id',
         },
         role: {
-			type: DataTypes.STRING
+			type: DataTypes.ENUM('client', 'provider', 'admin')
 		},
         name: {
 			type: DataTypes.STRING

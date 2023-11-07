@@ -41,7 +41,7 @@ export async function createAdmin (req, res) {
     }
 };
 
-export async function updateClient(req, res) {
+export async function updateAdmin(req, res) {
   const  adminId = parseInt(req.params.id);
   try {
   	const adminToUpdate = await Admin.findByPk(adminId);

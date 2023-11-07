@@ -4,14 +4,15 @@ import {
     getClientCart,  
     deleteClient, 
     getAllClients,
-    updateClient 
+    updateClient, 
 } from '../controllers/clientController.js';
+import makeBody from '../middlewares/makeBody.js';
 
 const clientRouter = express.Router();
 
 clientRouter.get('/clients/', getAllClients);
-clientRouter.post('/clients', createClient);
-clientRouter.patch('/clients/:id', updateClient);
+clientRouter.post('/clients', makeBody, createClient);
+clientRouter.patch('/clients/:id', makeBody, updateClient);
 clientRouter.delete('/clients/:id', deleteClient);
 
 // Relacíon con el carrito

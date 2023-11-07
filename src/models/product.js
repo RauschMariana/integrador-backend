@@ -31,6 +31,6 @@ const Product = db.define(
 );
 
 Product.hasMany(Cart, { foreinkey: "id_product", sourceKey: "id" });
-Cart.belongsTo(Product, { foreinkey: "id_cart", targetId: "id" });
+Cart.belongsTo(Product, { foreinkey: "id_product", targetId: "id" });
 
 export default Product;

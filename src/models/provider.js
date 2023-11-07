@@ -34,5 +34,6 @@ const Provider = db.define(
 );
 
 Provider.hasMany(Product, { foreignKey: 'id_provider', sourceKey: 'id' });
+Product.belongsTo(Provider, { foreignKey: 'id_provider', targetId: 'id' });
 
 export default Provider;

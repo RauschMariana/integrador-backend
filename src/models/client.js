@@ -33,7 +33,7 @@ const Client = db.define(
     }
 );
 
-Client.hasOne(Cart, { foreinkey: "id_client", sourceKey: "id" });
-Cart.belongsTo(Client, { foreinkey: "id_cart", targetId: "id" });
+Client.hasMany(Cart, { foreinkey: "id_client", sourceKey: "id" });
+Cart.belongsTo(Client, { foreinkey: "id_client", targetId: "id" });
 
 export default Client;

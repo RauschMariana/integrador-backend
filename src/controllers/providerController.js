@@ -1,6 +1,6 @@
 import Provider from '../models/provider.js';
 
-export async function getAllProvider(req, res) {
+export async function getAllProviders(req, res) {
     try {
       const providers = await Provider.findAll({
         atributes: [

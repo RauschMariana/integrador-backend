@@ -26,3 +26,24 @@ Content-Type: application/json
 
 ### Eliminar a un usuario por id 
 DELETE {{ api }}/clients/6
+
+### Mostrar lista de carrito
+GET {{ api }}/carts
+
+### Mostrar datos de un carrito
+GET {{ api }}/carts/5
+
+### borrar carrito
+DELETE {{ api }}/carts/6
+
+### Agregar producto al carrito
+POST {{ api }}/carts/
+Content-Type: application/json
+
+{
+    "id": 6,
+    "id_client": 9,
+    "id_product": 20,
+    "quantity": 2,
+    "price": 2258.02
+}

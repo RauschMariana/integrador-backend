@@ -1,5 +1,6 @@
 import { DataTypes } from 'sequelize';
 import db from '../db/connection.js';
+import Sale from './sale.js';
 
 const Cart = db.define(
     'cart',
@@ -22,5 +23,8 @@ const Cart = db.define(
         tableName: 'carts'
     }
 );
+
+Cart.hasMany(Sale, { foreinkey: "id_cart", sourceKey: "id" });
+Sale.belongsTo(Cart, { foreinkey: "id_cart", targetId: "id" });
 
 export default Cart;

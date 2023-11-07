@@ -2,7 +2,7 @@
 ### Mostrar lista de productos
 GET {{ api }}/products/
 
-### Guardar un nuevo producto
+### Crear/Guardar un nuevo producto
 POST {{ api }}/products
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjU0MzIyMiwidXNlciI6ImVtaWx5ZGF2aXMiLCJsZXZlbCI6MSwiZXhwIjoxNjk4MTYxNjcwNTk5LCJpYXQiOjE2OTgxNjE2MTB9.baRWZOb4l4sHPvejyOm7x3n3eh6vJ1knWJ5QHb3qHbo
@@ -15,7 +15,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjU0MzIyMiwid
     "price": 7976
 }
 
-### Obtner datos de un producto por id
+### actualizar datos de un producto por id
 PATCH {{ api }}/products/1
 Content-Type: application/json
 
@@ -23,7 +23,7 @@ Content-Type: application/json
     "id_provider": 2
 }
 
-### Obtner datos de un producto por id
+### borrar un producto por id
 DELETE {{ api }}/products/21
 
 ### Obtner datos de un producto por id
@@ -31,6 +31,3 @@ GET {{ api }}/products/7
 
 ### Obtener el precio de un producto por id
 GET {{ api }}/products/7/price
-
-### Obtener precio total del stock
-GET {{ api }}/products/totalPriceStock
