@@ -8,9 +8,9 @@ import userRouter from './routes/user.routes.js';
 import productRouter from './routes/product.routes.js';
 import cartRouter from './routes/cart.routes.js';
 import clientRouter from './routes/client.routes.js';
-// import providerRouter from './routes/provider.routes.js';
-// import adminRouter from './routes/admin.routes.js';
-// import saleRouter from './routes/sale.routes.js';
+import providerRouter from './routes/provider.routes.js';
+import adminRouter from './routes/admin.routes.js';
+import saleRouter from './routes/sale.routes.js';
 
 const app = express();
 const expossedPort = process.env.PORT || 3100;
@@ -23,9 +23,9 @@ app.post('/auth', authenticate);
 // Routes
 app.use('/', userRouter);
 app.use('/', clientRouter);
-// app.use('/', providerRouter);
-// app.use('/', adminRouter);
-// app.use('/', saleRouter);
+app.use('/', providerRouter);
+app.use('/', adminRouter);
+app.use('/', saleRouter);
 app.use('/', productRouter);
 app.use('/', cartRouter);
 
