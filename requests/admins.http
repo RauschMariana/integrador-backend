@@ -34,7 +34,7 @@ DELETE {{ api }}/admins/2
 GET {{ api }}/sales
 
 ### Mostrar datos de una venta
-GET {{ api }}/sales/5
+GET {{ api }}/sales/4
 
 ### borrar carrito
 DELETE {{ api }}/sales/2

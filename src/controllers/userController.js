@@ -19,28 +19,60 @@ export async function getAllUsers(req, res) {
     }
 };
 
-export async function createUser(req, res) {
-  try{
-      let bodyTemp = '';
-      req.on('data', (chunk) => {
-        bodyTemp += chunk.toString();
-      });
-      req.on('end', async () => {
-        const data = JSON.parse(bodyTemp)
-        req.body = data;
 
-        // vailda si existe usuario con ese email
-        const user = await User.findOne({ where: { email: data.email}});
-        if (user) return res.status(400).json({ message:'Usuario existente' });
-        
+export async function createUser(req, res) {
+  try {
+    let bodyTemp = '';
+      
+    req.on('data', (chunk) => {
+      bodyTemp += chunk.toString();
+    });
+  
+    req.on('end', async () => {
+      try {
+        const data = JSON.parse(bodyTemp);
+          
+        // Valida si existe un usuario con ese email
+        const user = await User.findOne({ where: { email: data.email } });
+        if (user) {
+          return res.status(400).json({ message: 'Usuario existente' });
+        }
+          
+        // Crea y guarda el nuevo usuario en la base de datos
         const userToSave = new User(data);
         await userToSave.save();
-        return res.status(201).json({ message: 'success' });
-      });
-    } catch (error) {
-      return res.status(204).json({ message: 'error' });
-    }
+          
+        // Responde con éxito después de guardar en la base de datos
+        res.status(201).json({ message: 'success' });
+      } catch (error) {
+        res.status(500).json({ message: 'Error interno del servidor' });
+      }
+    });
+  } catch (error) {
+    res.status(500).json({ message: 'Error interno del servidor' });
+  }
 };
+  // try{
+  //     let bodyTemp = '';
+  //     req.on('data', (chunk) => {
+  //       bodyTemp += chunk.toString();
+  //     });
+  //     req.on('end', async () => {
+  //       const data = JSON.parse(bodyTemp)
+  //       req.body = data;
+
+  //       // vailda si existe usuario con ese email
+  //       const user = await User.findOne({ where: { email: data.email}});
+  //       if (user) return res.status(400).json({ message:'Usuario existente' });
+        
+  //       const userToSave = new User(data);
+  //       await userToSave.save();
+  //     });
+
+  //     return res.status(201).json({ message: 'success' });
+  //   } catch (error) {
+  //     return res.status(204).json({ message: 'error' });
+  //   }
 
 export const updateUser = async (req, res) => {
   const userId = parseInt(req.params.id);

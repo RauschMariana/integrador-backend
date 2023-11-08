@@ -18,6 +18,17 @@ export async function getAllProviders(req, res) {
     }
 };
 
+export async function getProviderById(req, res) {
+  try {
+    const providerId = parseInt(req.params.id);
+    const provider = await Provider.findByPk(providerId);
+    if (!provider) return res.status(404).json({ message: 'Proveedor no encontrado' });
+    res.json(provider);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
 export async function createProvider (req, res) {
   try{
       let bodyTemp = '';
@@ -66,15 +77,18 @@ try {
 };
 
 export async function deleteProvider(req, res) {
-try {
-  const providerId = parseInt(req.params.id);
-  const provider = await Provider.findByPk(providerId);
-  if (!provider) return res.status(404).json({ message: 'Proveedor no encontrado' });
+  try {
+    const providerId = parseInt(req.params.id);
+    const provider = await Provider.findByPk(providerId);
+    if (!provider) return res.status(404).json({ message: 'Proveedor no encontrado' });
 
-  await provider.destroy();
-  return res.status(200).json({message:'Proveedor eliminado'});
-  
-} catch (error) {
-  return res.status(204).json({ message: 'Proveedor no encontrado' });
-}
+    await provider.destroy();
+    return res.status(200).json({message:'Proveedor eliminado'});
+    
+  } catch (error) {
+    console.log(error);
+    return res.status(204).json({ message: 'Proveedor no encontrado' });
+  }
 };
+
+

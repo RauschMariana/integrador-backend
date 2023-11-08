@@ -1,7 +1,6 @@
 import express from 'express';
 import db from './db/connection.js';
 
-import authenticate from './middlewares/authenticate.js';
 import makeBody from './middlewares/makeBody.js';
 
 import userRouter from './routes/user.routes.js';
@@ -18,7 +17,7 @@ const expossedPort = process.env.PORT || 3100;
 // Middlewares
 app.use(makeBody);
 
-app.post('/auth', authenticate);
+app.post('/auth');
 
 // Routes
 app.use('/', userRouter);

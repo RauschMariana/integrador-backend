@@ -1,4 +1,6 @@
 import Cart from '../models/cart.js';
+import Client from '../models/client.js';
+import Product from '../models/product.js';
 
 export const getAllCarts = async (req, res) => {
   try {
@@ -12,30 +14,6 @@ export const getAllCarts = async (req, res) => {
     console.log(error);
     res.status(500).json({ message: error.message });
   }
-};
-
-export async function createCart(req, res) {
-  try{
-      let bodyTemp = '';
-      req.on('data', (chunk) => {
-        bodyTemp += chunk.toString();
-      });
-      req.on('end', async () => {
-        const data = JSON.parse(bodyTemp)
-        req.body = data;
-
-        const cart = await Cart.findOne({ where: { id_client: data.id_client }});
-        if (cart) return res.status(400).json({ message: 'Carrito existente' });
-        
-        const cartToSave = new Cart(data);
-        await cartToSave.save();
-        
-      });
-      res.status(201).json({ message: 'success' });
-
-    } catch (error) {
-      res.status(204).json({ message: 'error' });
-    }
 };
 
 export const getCartById = async (req, res) => {
@@ -54,7 +32,8 @@ export const getCartById = async (req, res) => {
 export const deleteCart = async (req, res) => {
   const { id } = req.params;
   try {
-    // await Sale.destroy({ where: { id } });
+    await Client.destroy({ where: { id_client: id } });
+    await Product.destroy({ where: { id_product: id } });
     await Cart.destroy({ where: { id } });
 
     return res.sendStatus(200);

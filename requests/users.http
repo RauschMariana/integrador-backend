@@ -6,6 +6,7 @@ GET {{ api }}/users/
 ### Crear un nuevo usuario 
 POST {{ api }}/users
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQxLCJ1c2VyIjoicGVkcm9sb3BleiIsInJvbGUiOiJwcm92aWRlciIsImV4cCI6MTY5OTk3MTI4NDc5MywiaWF0IjoxNjk5MzcxMjg0fQ.61l4iAVOFHO92fShdwROT0HsonKarGRLdWLdCMS_M7Y
 
 {
   "role": "provider",
@@ -27,7 +28,7 @@ Content-Type: application/json
 
 ### Eliminar a un usuario por id 
 DELETE {{ api }}/users/22
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQxLCJ1c2VyIjoicGVkcm9sb3BleiIsInJvbGUiOiJwcm92aWRlciIsImV4cCI6MTY5OTMxNDI2NTM0NywiaWF0IjoxNjk5MzE0MjA1fQ.I7qzVqPhDAZqU0cthJpE4-kRonuu78Ja7sPmGkUHHlw
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQxLCJ1c2VyIjoicGVkcm9sb3BleiIsInJvbGUiOiJwcm92aWRlciIsImV4cCI6MTY5OTk3MTI4NDc5MywiaWF0IjoxNjk5MzcxMjg0fQ.61l4iAVOFHO92fShdwROT0HsonKarGRLdWLdCMS_M7Y
 
 
 ### Mostrar datos de un usuario por id

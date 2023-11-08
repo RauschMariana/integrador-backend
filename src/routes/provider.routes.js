@@ -3,15 +3,16 @@ import {
     createProvider,
     deleteProvider, 
     getAllProviders,
+    getProviderById,
     updateProvider
 } from '../controllers/providerController.js';
-import makeBody from '../middlewares/makeBody.js';
 
 const providerRouter = express.Router();
 
 providerRouter.get('/providers/', getAllProviders);
-providerRouter.post('/providers', makeBody, createProvider);
-providerRouter.patch('/providers/:id', makeBody, updateProvider);
+providerRouter.post('/providers', createProvider);
+providerRouter.patch('/providers/:id', updateProvider);
 providerRouter.delete('/providers/:id', deleteProvider);
+providerRouter.get('/providers/:id', getProviderById);
 
 export default providerRouter;

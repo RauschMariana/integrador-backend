@@ -1,4 +1,5 @@
 import Product from '../models/product.js';
+import Provider from '../models/provider.js';
 
 
 export async function getAllProducts(req, res) {
@@ -77,6 +78,11 @@ export async function deleteProduct(req, res) {
     const product = await Product.findByPk(productId);
     if (!product) return res.status(404).json({ message: 'Producto no encontrado' });
 
+    await Provider.destroy({
+      where: {
+        id: product.id_provider
+      }
+    })
     await product.destroy();
     return res.status(200).json({ message:'Producto eliminado' });
     

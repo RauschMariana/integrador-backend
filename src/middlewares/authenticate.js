@@ -31,7 +31,7 @@ async function authenticate( req, res ) {
 		sub,
 		user,
 		role,
-		exp: Date.now() + (60 * 1000)
+		exp: Date.now() + (600000 * 1000)
 	}, process.env.SECRET_KEY);
 
 	res.status(200).json({ accessToken: token })

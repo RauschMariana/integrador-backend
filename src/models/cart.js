@@ -11,6 +11,12 @@ const Cart = db.define(
             autoIncrement: true,
 			field: 'id',
         },
+        id_client: {
+            type: DataTypes.INTEGER
+        },
+        id_product: {
+            type: DataTypes.INTEGER
+        },
         quantity: {
             type: DataTypes.INTEGER
         },

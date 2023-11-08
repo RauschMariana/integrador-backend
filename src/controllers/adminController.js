@@ -18,6 +18,17 @@ export async function getAllAdmins(req, res) {
     }
 };
 
+export async function getAdminById(req, res) {
+  try {
+    const adminId = parseInt(req.params.id);
+    const admin = await Admin.findByPk(adminId);
+    if (!admin) return res.status(404).json({ message: 'Admin no encontrado' });
+    res.json(admin);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+}
+
 export async function createAdmin (req, res) {
   try{
       let bodyTemp = '';

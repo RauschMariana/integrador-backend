@@ -1,6 +1,4 @@
-import Cart from '../models/cart.js';
 import Client from '../models/client.js';
-import Product from '../models/product.js';
 
 export async function getAllClients(req, res) {
     try {
@@ -81,4 +79,3 @@ export async function deleteClient(req, res) {
     return res.status(204).json({ message: 'Cliente no encontrado' });
   }
 };
-

@@ -7,15 +7,13 @@ import {
     getProductPriceById, 
     updateProduct 
 } from '../controllers/productController.js';
-import { isProvider } from '../middlewares/permissions.js';
-import makeBody from '../middlewares/makeBody.js';
 
 const productRouter = express.Router();
 
 productRouter.get('/products/', getAllProducts);
-productRouter.post('/products', makeBody, isProvider,  createProduct);
-productRouter.patch('/products/:id', makeBody, isProvider, updateProduct);
-productRouter.delete('/products/:id', isProvider, deleteProduct);
+productRouter.post('/products', createProduct);
+productRouter.patch('/products/:id', updateProduct);
+productRouter.delete('/products/:id', deleteProduct);
 
 productRouter.get('/products/:id', getProductById);
 productRouter.get('/products/:id/price', getProductPriceById);
