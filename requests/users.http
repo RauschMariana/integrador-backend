@@ -6,9 +6,9 @@ GET {{ api }}/users/
 ### Crear un nuevo usuario 
 POST {{ api }}/users
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQxLCJ1c2VyIjoicGVkcm9sb3BleiIsInJvbGUiOiJwcm92aWRlciIsImV4cCI6MTY5OTk3MTI4NDc5MywiaWF0IjoxNjk5MzcxMjg0fQ.61l4iAVOFHO92fShdwROT0HsonKarGRLdWLdCMS_M7Y
 
 {
+  "id": 22,
   "role": "provider",
   "name": "Oscar Salazar",
   "email": "oscarsalazar@gmail.com",
@@ -19,11 +19,11 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQxLCJ1c2VyI
 
 
 ### Actualizar algunos datos de usuario por id 
-PATCH {{ api }}/users/25
+PUT {{ api }}/users/25
 Content-Type: application/json
 
 {
-  "role": "provider"
+  "email": "janesmith@email.com"
 }
 
 ### Eliminar a un usuario por id 

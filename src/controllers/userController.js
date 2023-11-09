@@ -20,66 +20,24 @@ export async function getAllUsers(req, res) {
 };
 
 
-export async function createUser(req, res) {
+export async function createUser(req, res) { 
   try {
-    let bodyTemp = '';
-      
-    req.on('data', (chunk) => {
-      bodyTemp += chunk.toString();
-    });
-  
-    req.on('end', async () => {
-      try {
-        const data = JSON.parse(bodyTemp);
-          
-        // Valida si existe un usuario con ese email
-        const user = await User.findOne({ where: { email: data.email } });
-        if (user) {
-          return res.status(400).json({ message: 'Usuario existente' });
-        }
-          
-        // Crea y guarda el nuevo usuario en la base de datos
-        const userToSave = new User(data);
-        await userToSave.save();
-          
-        // Responde con éxito después de guardar en la base de datos
-        res.status(201).json({ message: 'success' });
-      } catch (error) {
-        res.status(500).json({ message: 'Error interno del servidor' });
-      }
-    });
+    const userToSave = new User(req.body);
+    if (await User.findOne({ where: { email: userToSave.email }})) {
+      return res.status(400).json({ message: 'Usuario existente' });
+    }
+    await userToSave.save();
+    return res.status(201).json({ message: 'success' });
   } catch (error) {
-    res.status(500).json({ message: 'Error interno del servidor' });
+    return res.status(204).json({ message: 'error' });
   }
 };
-  // try{
-  //     let bodyTemp = '';
-  //     req.on('data', (chunk) => {
-  //       bodyTemp += chunk.toString();
-  //     });
-  //     req.on('end', async () => {
-  //       const data = JSON.parse(bodyTemp)
-  //       req.body = data;
 
-  //       // vailda si existe usuario con ese email
-  //       const user = await User.findOne({ where: { email: data.email}});
-  //       if (user) return res.status(400).json({ message:'Usuario existente' });
-        
-  //       const userToSave = new User(data);
-  //       await userToSave.save();
-  //     });
-
-  //     return res.status(201).json({ message: 'success' });
-  //   } catch (error) {
-  //     return res.status(204).json({ message: 'error' });
-  //   }
-
-export const updateUser = async (req, res) => {
+export async function updateUser(req, res) {
   const userId = parseInt(req.params.id);
   try {
-  	const userToUpdate = await User.findByPk(userId);
-  	if (!userToUpdate) return res.status(404).json({ message: 'Usuario no encontrado'});
-    
+    const userToUpdate = await User.findByPk(userId);
+    if (!userToUpdate) return res.status(404).json({ message: 'Usuario no encontrado' });
     let bodyTemp = '';
     req.on('data', (chunk) => {
       bodyTemp += chunk.toString();
@@ -91,7 +49,7 @@ export const updateUser = async (req, res) => {
     });
     return res.status(200).send('Usuario actualizado');
   } catch (error) {
-  	res.status(204).json({ message: 'Usuario no encontrado'});
+    res.status(204).json({ message: 'Usuario no encontrado' });
   }
 };
   

@@ -1,29 +1,40 @@
 import jwt from 'jsonwebtoken';
 // Middleware para la validación de los token recibidos
 
-function tokenAuthorization(req, res, next) {
-	const headerAuthorization = req.headers['authorization'];
-	const recdToken = headerAuthorization.split(' ')[1];
+function tokenAuthorization(role) {
+	return function (req, res, next) {
+		const headerAuthorization = req.headers['authorization'];
 
-	if (recdToken == null){
-		return res.status(401).json({ message: 'Token inválido' });
-	}
+		if (!headerAuthorization) {
+			return res.status(401).json({ message: 'Token inválido' });
+		}
+		
+		const receivedToken = headerAuthorization.split(' ')[1];
+	
+		if (receivedToken == null){
+			return res.status(401).json({ message: 'Token inválido' });
+		}
+	
+		let payload = null;
+	
+		try {
+			payload = jwt.verify(recdToken, process.env.SECRET_KEY);
+		} catch (error) {
+			return res.status(401).json({ message: 'Token inválido' });
+		};
+	
+		if (Date.now() > payload.exp) {
+			return res.status(401).json({ message: 'Token expirado' });
+		}
 
-	let payload = null;
-
-	try {
-		payload = jwt.verify(recdToken, process.env.SECRET_KEY);
-	} catch (error) {
-		return res.status(401).json({ message: 'Token inválido' });
+		if (payload.role !== role){
+			return res.status(403).json({ message: 'Acceso denegado' });
+		}
+	
+		res.user = payload.sub;
+	
+		next();
 	};
-
-	if (Date.now() > payload.exp) {
-		return res.status(401).json({ message: 'Token expirado' });
-	}
-
-	res.user = payload.sub;
-
-	next();
 };
 
 export default tokenAuthorization;

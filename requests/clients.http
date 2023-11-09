@@ -8,7 +8,7 @@ POST {{ api }}/clients
 Content-Type: application/json
 
 {
-  "id": 6,
+  "id": 16,
   "name": "Emily Davis",
   "email": "emilydavis@email.com",
   "telephone": "4221117878",
@@ -17,15 +17,15 @@ Content-Type: application/json
 }
 
 ### Actualizar algunos datos de usuario por id 
-PATCH {{ api }}/clients/4
+PATCH {{ api }}/clients/5
 Content-Type: application/json
 
 {
-  "email": "janesmith@email.com"
+  "email": "dwilson@email.com"
 }
 
 ### Eliminar a un usuario por id 
-DELETE {{ api }}/clients/6
+DELETE {{ api }}/clients/16
 
 ### Mostrar lista de carrito
 GET {{ api }}/carts/

@@ -16,22 +16,19 @@ async function authenticate( req, res ) {
 		return res.status(400).json({ message: 'Nombre de usuario no encontrado' });
 	}
 
-	// password validation
 	if (foundUsername[0].password !== recdPassword) {
 		return res.status(400).json({ message: 'Contraseña incorrecta'});
 	} 
 
-	// generación de token
 	const sub = foundUsername[0].id;
 	const user = foundUsername[0].username;
 	const role = foundUsername[0].role;
 
-	// firma y construcción del token
 	const token = jwt.sign({
 		sub,
 		user,
 		role,
-		exp: Date.now() + (600000 * 1000)
+		exp: Date.now() + (3600 * 1000)
 	}, process.env.SECRET_KEY);
 
 	res.status(200).json({ accessToken: token })

@@ -30,7 +30,7 @@ const Cart = db.define(
     }
 );
 
-Cart.hasMany(Sale, { foreinkey: "id_cart", sourceKey: "id" });
-Sale.belongsTo(Cart, { foreinkey: "id_cart", targetId: "id" });
+Cart.hasMany(Sale, { foreinkey: "id_cart", sourceKey: "id", onDelete: "CASCADE", onUpdate: "CASCADE" });
+Sale.belongsTo(Cart, { foreinkey: "id_cart", targetId: "id", onDelete: "CASCADE", onUpdate: "CASCADE" });
 
 export default Cart;

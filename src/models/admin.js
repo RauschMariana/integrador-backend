@@ -1,5 +1,6 @@
 import { DataTypes } from 'sequelize';
 import db from '../db/connection.js';
+import Sale from './sale.js';
 
 const Admin = db.define(
     'admin',
@@ -31,5 +32,8 @@ const Admin = db.define(
 		tableName: 'admins'
     }
 );
+
+Admin.hasMany(Sale, ({ foreignKey: 'id_admin', sourceKey: 'id' , onDelete: 'CASCADE' }));
+Sale.belongsTo(Admin, ({ foreignKey: 'id_admin', targetKey: 'id', onDelete: 'CASCADE' }));
 
 export default Admin;

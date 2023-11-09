@@ -33,7 +33,7 @@ const Provider = db.define(
     }
 );
 
-Provider.hasMany(Product, { foreignKey: 'id_provider', sourceKey: 'id' });
-Product.belongsTo(Provider, { foreignKey: 'id_provider', targetId: 'id' });
+Provider.hasMany(Product, { foreignKey: 'id_provider', sourceKey: 'id', onDelete: 'cascade' });
+Product.belongsTo(Provider, { foreignKey: 'id_provider', targetId: 'id', onDelete: 'cascade' });
 
 export default Provider;

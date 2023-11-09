@@ -6,17 +6,17 @@ GET {{ api }}/admins
 ### Mostrar datos de un administrador por id
 GET {{ api }}/admins/2
 
-## Crear un nuevo administrador
+### Crear un nuevo administrador
 POST {{ api }}/admins
 Content-Type: application/json
 
 {
-  "id": 4,
-  "name": "",
-  "email": "",
-  "telephone": "",
-  "username": "",
-  "password": ""
+  "id": 3,
+  "name": "David Ramírez",
+  "email": "davidramirez@email.com",
+  "telephone": "5551234567",
+  "username": "davidramirez",
+  "password": "ramirez567"
 }
 
 ### Actualizar algunos datos de algun administrador por id 
@@ -24,11 +24,11 @@ PATCH {{ api }}/admins/4
 Content-Type: application/json
 
 {
-  "email": "janesmith@email.com"
+  "email": "sebasmendez@email.com"
 }
 
 ### borrar un administrador por id
-DELETE {{ api }}/admins/2
+DELETE {{ api }}/admins/3
 
 ### Mostrar lista de ventas
 GET {{ api }}/sales

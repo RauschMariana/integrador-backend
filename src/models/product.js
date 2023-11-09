@@ -30,7 +30,7 @@ const Product = db.define(
     }
 );
 
-Product.hasMany(Cart, { foreinkey: "id_product", sourceKey: "id" });
-Cart.belongsTo(Product, { foreinkey: "id_product", targetId: "id" });
+Product.hasMany(Cart, { foreinkey: "id_product", sourceKey: "id", onDelete: "cascade" });
+Cart.belongsTo(Product, { foreinkey: "id_product", targetId: "id", onDelete: "cascade" });
 
 export default Product;

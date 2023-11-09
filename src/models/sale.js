@@ -10,6 +10,15 @@ const Sale = db.define(
             autoIncrement: true,
 			field: 'id',
         },
+
+        id_cart: {
+            type: DataTypes.INTEGER
+        },
+
+        id_admin: {
+            type: DataTypes.INTEGER
+        },
+        
         total: {
             type: DataTypes.REAL
         }
