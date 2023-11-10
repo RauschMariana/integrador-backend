@@ -6,6 +6,7 @@ GET {{ api }}/products/
 ### Crear/Guardar un nuevo producto
 POST {{ api }}/products
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQzLCJ1c2VyIjoiYW1hbmRhYmVja2VyIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNjk5NTgxODc2MDI5LCJpYXQiOjE2OTk1NzgyNzZ9.KDiSyzc1yJGOh5s92Y5nCtYpZWtd_kxNcSIZUuQaK7I
 
 {
     "id": 21,
@@ -19,6 +20,7 @@ Content-Type: application/json
 ### actualizar datos de un producto por id
 PATCH {{ api }}/products/5
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQzLCJ1c2VyIjoiYW1hbmRhYmVja2VyIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNjk5NTgxODc2MDI5LCJpYXQiOjE2OTk1NzgyNzZ9.KDiSyzc1yJGOh5s92Y5nCtYpZWtd_kxNcSIZUuQaK7I
 
 {
     "type": "plaque"
@@ -26,9 +28,20 @@ Content-Type: application/json
 
 ### borrar un producto por id
 DELETE {{ api }}/products/21
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQzLCJ1c2VyIjoiYW1hbmRhYmVja2VyIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNjk5NTgxODc2MDI5LCJpYXQiOjE2OTk1NzgyNzZ9.KDiSyzc1yJGOh5s92Y5nCtYpZWtd_kxNcSIZUuQaK7I
 
 ### Obtner datos de un producto por id
 GET {{ api }}/products/7
 
 ### Obtener el precio de un producto por id
 GET {{ api }}/products/7/price
+
+
+### Autenticar un usuario
+POST {{ api }}/auth
+Content-Type: application/json
+
+{
+  "username": "amandabecker",
+  "password": "becker333"
+}

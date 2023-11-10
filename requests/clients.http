@@ -2,10 +2,12 @@
 
 ### Mostrar lista de carrito
 GET {{ api }}/clients/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQzLCJ1c2VyIjoiYW1hbmRhYmVja2VyIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNjk5NTgxODc2MDI5LCJpYXQiOjE2OTk1NzgyNzZ9.KDiSyzc1yJGOh5s92Y5nCtYpZWtd_kxNcSIZUuQaK7I
 
 ### Mostrar lista de carrito
 POST {{ api }}/clients
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQzLCJ1c2VyIjoiYW1hbmRhYmVja2VyIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNjk5NTgxODc2MDI5LCJpYXQiOjE2OTk1NzgyNzZ9.KDiSyzc1yJGOh5s92Y5nCtYpZWtd_kxNcSIZUuQaK7I
 
 {
   "id": 16,
@@ -19,6 +21,7 @@ Content-Type: application/json
 ### Actualizar algunos datos de usuario por id 
 PATCH {{ api }}/clients/5
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQzLCJ1c2VyIjoiYW1hbmRhYmVja2VyIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNjk5NTgxODc2MDI5LCJpYXQiOjE2OTk1NzgyNzZ9.KDiSyzc1yJGOh5s92Y5nCtYpZWtd_kxNcSIZUuQaK7I
 
 {
   "email": "dwilson@email.com"
@@ -26,13 +29,25 @@ Content-Type: application/json
 
 ### Eliminar a un usuario por id 
 DELETE {{ api }}/clients/16
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQzLCJ1c2VyIjoiYW1hbmRhYmVja2VyIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNjk5NTgxODc2MDI5LCJpYXQiOjE2OTk1NzgyNzZ9.KDiSyzc1yJGOh5s92Y5nCtYpZWtd_kxNcSIZUuQaK7I
 
 ### Mostrar lista de carrito
 GET {{ api }}/carts/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQzLCJ1c2VyIjoiYW1hbmRhYmVja2VyIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNjk5NTgxODc2MDI5LCJpYXQiOjE2OTk1NzgyNzZ9.KDiSyzc1yJGOh5s92Y5nCtYpZWtd_kxNcSIZUuQaK7I
 
 ### Mostrar datos de un carrito
 GET {{ api }}/carts/2
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQzLCJ1c2VyIjoiYW1hbmRhYmVja2VyIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNjk5NTgxODc2MDI5LCJpYXQiOjE2OTk1NzgyNzZ9.KDiSyzc1yJGOh5s92Y5nCtYpZWtd_kxNcSIZUuQaK7I
 
 ### borrar carrito
 DELETE {{ api }}/carts/8
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQzLCJ1c2VyIjoiYW1hbmRhYmVja2VyIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNjk5NTgxODc2MDI5LCJpYXQiOjE2OTk1NzgyNzZ9.KDiSyzc1yJGOh5s92Y5nCtYpZWtd_kxNcSIZUuQaK7I
 
+### Autenticar un usuario
+POST {{ api }}/auth
+Content-Type: application/json
+
+{
+  "username": "amandabecker",
+  "password": "becker333"
+}

@@ -5,10 +5,12 @@ GET {{ api }}/admins
 
 ### Mostrar datos de un administrador por id
 GET {{ api }}/admins/2
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQzLCJ1c2VyIjoiYW1hbmRhYmVja2VyIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNjk5NTgxODc2MDI5LCJpYXQiOjE2OTk1NzgyNzZ9.KDiSyzc1yJGOh5s92Y5nCtYpZWtd_kxNcSIZUuQaK7I
 
 ### Crear un nuevo administrador
 POST {{ api }}/admins
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQzLCJ1c2VyIjoiYW1hbmRhYmVja2VyIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNjk5NTgxODc2MDI5LCJpYXQiOjE2OTk1NzgyNzZ9.KDiSyzc1yJGOh5s92Y5nCtYpZWtd_kxNcSIZUuQaK7I
 
 {
   "id": 3,
@@ -22,6 +24,7 @@ Content-Type: application/json
 ### Actualizar algunos datos de algun administrador por id 
 PATCH {{ api }}/admins/4
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQzLCJ1c2VyIjoiYW1hbmRhYmVja2VyIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNjk5NTgxODc2MDI5LCJpYXQiOjE2OTk1NzgyNzZ9.KDiSyzc1yJGOh5s92Y5nCtYpZWtd_kxNcSIZUuQaK7I
 
 {
   "email": "sebasmendez@email.com"
@@ -29,12 +32,25 @@ Content-Type: application/json
 
 ### borrar un administrador por id
 DELETE {{ api }}/admins/3
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQzLCJ1c2VyIjoiYW1hbmRhYmVja2VyIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNjk5NTgxODc2MDI5LCJpYXQiOjE2OTk1NzgyNzZ9.KDiSyzc1yJGOh5s92Y5nCtYpZWtd_kxNcSIZUuQaK7I
 
 ### Mostrar lista de ventas
 GET {{ api }}/sales
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQzLCJ1c2VyIjoiYW1hbmRhYmVja2VyIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNjk5NTgxODc2MDI5LCJpYXQiOjE2OTk1NzgyNzZ9.KDiSyzc1yJGOh5s92Y5nCtYpZWtd_kxNcSIZUuQaK7I
 
 ### Mostrar datos de una venta
 GET {{ api }}/sales/4
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQzLCJ1c2VyIjoiYW1hbmRhYmVja2VyIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNjk5NTgxODc2MDI5LCJpYXQiOjE2OTk1NzgyNzZ9.KDiSyzc1yJGOh5s92Y5nCtYpZWtd_kxNcSIZUuQaK7I
 
 ### borrar carrito
 DELETE {{ api }}/sales/2
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQzLCJ1c2VyIjoiYW1hbmRhYmVja2VyIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNjk5NTgxODc2MDI5LCJpYXQiOjE2OTk1NzgyNzZ9.KDiSyzc1yJGOh5s92Y5nCtYpZWtd_kxNcSIZUuQaK7I
+
+### Autenticar un usuario
+POST {{ api }}/auth
+Content-Type: application/json
+
+{
+  "username": "amandabecker",
+  "password": "becker333"
+}

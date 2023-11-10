@@ -2,13 +2,16 @@
 
 ### Mostrar lista de proveedres
 GET {{ api }}/providers
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQzLCJ1c2VyIjoiYW1hbmRhYmVja2VyIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNjk5NTgxODc2MDI5LCJpYXQiOjE2OTk1NzgyNzZ9.KDiSyzc1yJGOh5s92Y5nCtYpZWtd_kxNcSIZUuQaK7I
 
 ### Mostrar datos de un proveedor por id
 GET {{ api }}/providers/5
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQzLCJ1c2VyIjoiYW1hbmRhYmVja2VyIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNjk5NTgxODc2MDI5LCJpYXQiOjE2OTk1NzgyNzZ9.KDiSyzc1yJGOh5s92Y5nCtYpZWtd_kxNcSIZUuQaK7I
 
 ### Crear un nuevo proveedor
 POST {{ api }}/providers
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQzLCJ1c2VyIjoiYW1hbmRhYmVja2VyIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNjk5NTgxODc2MDI5LCJpYXQiOjE2OTk1NzgyNzZ9.KDiSyzc1yJGOh5s92Y5nCtYpZWtd_kxNcSIZUuQaK7I
 
 {
   "id": 6,
@@ -22,6 +25,7 @@ Content-Type: application/json
 ### Actualizar algunos datos de proveedor por id 
 PATCH {{ api }}/providers/6
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQzLCJ1c2VyIjoiYW1hbmRhYmVja2VyIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNjk5NTgxODc2MDI5LCJpYXQiOjE2OTk1NzgyNzZ9.KDiSyzc1yJGOh5s92Y5nCtYpZWtd_kxNcSIZUuQaK7I
 
 {
   "email": "mferman@email.com"
@@ -29,3 +33,13 @@ Content-Type: application/json
 
 ### borrar proveedor por id
 DELETE {{ api }}/providers/5
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQzLCJ1c2VyIjoiYW1hbmRhYmVja2VyIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNjk5NTgxODc2MDI5LCJpYXQiOjE2OTk1NzgyNzZ9.KDiSyzc1yJGOh5s92Y5nCtYpZWtd_kxNcSIZUuQaK7I
+
+### Autenticar un usuario
+POST {{ api }}/auth
+Content-Type: application/json
+
+{
+  "username": "amandabecker",
+  "password": "becker333"
+}
