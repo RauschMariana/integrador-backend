@@ -12,11 +12,13 @@ const Sale = db.define(
         },
 
         id_cart: {
-            type: DataTypes.INTEGER
+            type: DataTypes.INTEGER,
+            allowNull: false,
         },
 
         id_admin: {
-            type: DataTypes.INTEGER
+            type: DataTypes.INTEGER,
+            allowNull: false,
         },
         
         total: {
@@ -28,5 +30,6 @@ const Sale = db.define(
         tableName: 'sales'
     }
 );
+
 
 export default Sale;
