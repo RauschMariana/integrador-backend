@@ -6,6 +6,7 @@ GET {{ api }}/users/
 ### Crear un nuevo usuario 
 POST {{ api }}/users
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQzLCJ1c2VyIjoiYW1hbmRhYmVja2VyIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNjk5NTgxODc2MDI5LCJpYXQiOjE2OTk1NzgyNzZ9.KDiSyzc1yJGOh5s92Y5nCtYpZWtd_kxNcSIZUuQaK7I
 
 {
   "id": 22,
@@ -21,6 +22,7 @@ Content-Type: application/json
 ### Actualizar algunos datos de usuario por id 
 PUT {{ api }}/users/25
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQ0LCJ1c2VyIjoic29maWFyb2RyaWd1ZXoiLCJyb2xlIjoiY2xpZW50IiwiZXhwIjoxNjk5NTgxNjA4ODg2LCJpYXQiOjE2OTk1NzgwMDh9.qEYaGyfYq_Mc_qzo6noczA6mJJhQO78YsK1qhoFbbN4
 
 {
   "email": "janesmith@email.com"
@@ -28,7 +30,7 @@ Content-Type: application/json
 
 ### Eliminar a un usuario por id 
 DELETE {{ api }}/users/22
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQxLCJ1c2VyIjoicGVkcm9sb3BleiIsInJvbGUiOiJwcm92aWRlciIsImV4cCI6MTY5OTk3MTI4NDc5MywiaWF0IjoxNjk5MzcxMjg0fQ.61l4iAVOFHO92fShdwROT0HsonKarGRLdWLdCMS_M7Y
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQ0LCJ1c2VyIjoic29maWFyb2RyaWd1ZXoiLCJyb2xlIjoiY2xpZW50IiwiZXhwIjoxNjk5NTgxNjA4ODg2LCJpYXQiOjE2OTk1NzgwMDh9.qEYaGyfYq_Mc_qzo6noczA6mJJhQO78YsK1qhoFbbN4
 
 
 ### Mostrar datos de un usuario por id
@@ -38,10 +40,10 @@ GET {{ api }}/users/24
 GET {{ api }}/users/26/name
 
 ### Autenticar un usuario
-POST {{ api }}/users/auth
+POST {{ api }}/auth
 Content-Type: application/json
 
 {
-  "username": "pedrolopez",
-  "password": "lopez012"
+  "username": "amandabecker",
+  "password": "becker333"
 }

@@ -6,26 +6,26 @@ GET {{ api }}/providers
 ### Mostrar datos de un proveedor por id
 GET {{ api }}/providers/5
 
-## Crear un nuevo proveedor
+### Crear un nuevo proveedor
 POST {{ api }}/providers
 Content-Type: application/json
 
 {
-  "id": 2,
-  "name": "",
-  "email": "",
-  "telephone": "",
-  "username": "",
-  "password": ""
+  "id": 6,
+  "name": "Maria Ferman",
+  "email": "mariaferman@email.com",
+  "telephone": "0994582002",
+  "username": "mariaferman",
+  "password": "123456fm"
 }
 
 ### Actualizar algunos datos de proveedor por id 
-PATCH {{ api }}/providers/4
+PATCH {{ api }}/providers/6
 Content-Type: application/json
 
 {
-  "email": "janesmith@email.com"
+  "email": "mferman@email.com"
 }
 
 ### borrar proveedor por id
-DELETE {{ api }}/providers/2
+DELETE {{ api }}/providers/5

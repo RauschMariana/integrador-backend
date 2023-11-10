@@ -1,5 +1,5 @@
+import Cart from '../models/cart.js';
 import Product from '../models/product.js';
-import Provider from '../models/provider.js';
 
 
 export async function getAllProducts(req, res) {
@@ -21,30 +21,19 @@ export async function getAllProducts(req, res) {
 };
 
 export async function createProduct(req, res) {
-  try{
-    let bodyTemp = ''
-
-    req.on('data', (chunk) => {
-        bodyTemp += chunk.toString()
-    })
-
-    req.on('end', async () => {
-      const data = JSON.parse(bodyTemp);
-      req.body = data;
-
-      // vailda si existe usuario con ese email
-      const product = await Product.findOne({ where: {name: data.name} });
-      if (product) return res.status(400).json({ message:'Producto existente' });
-     
-      const producToSave = new Product(req.body)
-      await producToSave.save();
-
-      return res.status(201).json({"message": "success"})
-    });
+  try {
+    const productToSave = new Product(req.body);
     
+    if (await Product.findOne({ where: { id: productToSave.id }})) {
+      return res.status(400).json({ message: 'Producto existente' });
+    };
+
+    await productToSave.save();
+
+    return res.status(201).json({ message: 'success' });
   } catch (error) {
     return res.status(204).json({ message: 'error' });
-  }
+  };  
 };
   
 export const updateProduct = async (req, res) => {
@@ -61,11 +50,10 @@ export const updateProduct = async (req, res) => {
     req.on('end', async () => {
       const data = JSON.parse(bodyTemp);
       req.body = data;
-
-      await producToUpdate.update(req.body);
-      return res.status(200).send('Producto actualizado');
-
     });
+
+    await producToUpdate.update(req.body);
+    return res.status(200).json({ message: 'Producto actualizado' });
       
   } catch (error) {
     return res.status(204).json({ message: 'Producto no encontrado' });
@@ -73,22 +61,35 @@ export const updateProduct = async (req, res) => {
 };
   
 export async function deleteProduct(req, res) {
-  try {
-    const productId = parseInt(req.params.id);
-    const product = await Product.findByPk(productId);
-    if (!product) return res.status(404).json({ message: 'Producto no encontrado' });
+  const productId = req.params.id;
 
-    await Provider.destroy({
+  try {
+    await Cart.destroy({
       where: {
-        id: product.id_provider
-      }
-    })
-    await product.destroy();
-    return res.status(200).json({ message:'Producto eliminado' });
-    
+        id_product: productId
+      },     
+    });
+
+    const result = await Product.destroy({
+      where: {
+        id: productId
+      },
+    });
+
+    if (result === 0) {
+      return res.status(404).json({ 
+        message: 'El producto no fue encontrado' 
+      });
+    }
+
+    return res.status(200).json({ message: 'Producto eliminado' });
   } catch (error) {
-    return res.status(204).json({ message: 'Producto no encontrado' });
-  }
+    console.error(error);
+    return res.status(500).json({ 
+      message: 'Error al eliminar el cliente y registros relacionados en OtraEntidad' 
+    });
+  };
+
 };
 
 export async function getProductById(req, res) {

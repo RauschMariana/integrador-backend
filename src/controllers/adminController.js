@@ -84,12 +84,19 @@ export async function deleteAdmin(req, res) {
     });
 
     if (result === 0) {
-      return res.status(404).json({ message: 'El administrador no fue encontrado' });
-    }
+      return res.status(404).json({ 
+        message: 'El administrador no fue encontrado' 
+      });
+    };
 
-    return res.status(200).json({ message: 'El administrador fue eliminado' }); // Devolver una respuesta vacía (sin contenido) en caso de éxito.
+    // Devolver una respuesta vacía (sin contenido) en caso de éxito.
+    return res.status(200).json({ 
+      message: 'El administrador fue eliminado' 
+    }); 
   } catch (error) {
     console.error(error);
-    return res.status(500).json({ message: 'Error al eliminar el administrador y registros relacionados en OtraEntidad' });
-  }
+    return res.status(500).json({ 
+      message: 'Error al eliminar el administrador y registros relacionados en OtraEntidad' 
+    });
+  };
 };

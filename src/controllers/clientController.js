@@ -1,3 +1,4 @@
+import Cart from '../models/cart.js';
 import Client from '../models/client.js';
 
 export async function getAllClients(req, res) {
@@ -19,26 +20,17 @@ export async function getAllClients(req, res) {
 };
 
 export async function createClient(req, res) {
-  try{
-      let bodyTemp = '';
-      req.on('data', (chunk) => {
-        bodyTemp += chunk.toString();
-      });
-      req.on('end', async () => {
-        const data = JSON.parse(bodyTemp)
-        req.body = data;
 
-        const client = await Client.findOne({ where: { email: data.email }});
-        if (client) return res.status(400).json({ message: 'Cliente existente' });
-        
-        const clientToSave = new Client(data);
-        await clientToSave.save();
-        res.status(201).json({ message: 'success' });
-      });
-
-    } catch (error) {
-      res.status(204).json({ message: 'error' });
+  try {
+    const clientToSave = new Client(req.body);
+    if (await Client.findOne({ where: { email: clientToSave.email }})) {
+      return res.status(400).json({ message: 'Cliente existente' });
     }
+    await clientToSave.save();
+    return res.status(201).json({ message: 'success' });
+  } catch (error) {
+    return res.status(204).json({ message: 'error' });
+  }  
 };
 
 export async function updateClient(req, res) {
@@ -58,7 +50,7 @@ export async function updateClient(req, res) {
     });
 
     await clientToUpdate.update(req.body);
-    return res.status(200).send('Cliente actualizado');
+    return res.status(200).json({ message: 'Cliente actualizado' });
     
   } catch (error) {
   	res.status(204).json({ message: 'Cliente no encontrado'});
@@ -66,16 +58,28 @@ export async function updateClient(req, res) {
 };
   
 export async function deleteClient(req, res) {
-  try {
-    const clientId = parseInt(req.params.id);
-    const client = await Client.findByPk(clientId);
-    if (!client) return res.status(404).json({ message: 'Cliente no encontrado' });
+  const clientId = req.params.id;
 
-    await  Cart.destroy({ where: { id_client: clientId }});
-    await client.destroy();
-    return res.status(200).json({message:'Cliente eliminado'});
-    
+  try {
+    await Cart.destroy({
+      where: {
+        id_client: clientId
+      },
+      
+    })
+    const result = await Client.destroy({
+      where: {
+        id: clientId
+      },
+    });
+
+    if (result === 0) {
+      return res.status(404).json({ message: 'El cliente no fue encontrado' });
+    }
+
+    return res.status(200).json({ message: 'Cliente eliminado' });
   } catch (error) {
-    return res.status(204).json({ message: 'Cliente no encontrado' });
+    console.error(error);
+    return res.status(500).json({ message: 'Error al eliminar el cliente y registros relacionados en OtraEntidad' });
   }
 };

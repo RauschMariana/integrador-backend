@@ -25,12 +25,12 @@ export async function createUser(req, res) {
     const userToSave = new User(req.body);
     if (await User.findOne({ where: { email: userToSave.email }})) {
       return res.status(400).json({ message: 'Usuario existente' });
-    }
+    };
     await userToSave.save();
     return res.status(201).json({ message: 'success' });
   } catch (error) {
     return res.status(204).json({ message: 'error' });
-  }
+  };
 };
 
 export async function updateUser(req, res) {

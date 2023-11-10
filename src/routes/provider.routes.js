@@ -6,13 +6,14 @@ import {
     getProviderById,
     updateProvider
 } from '../controllers/providerController.js';
+import tokenAuthentication from '../middlewares/tokenAuthentication.js';
 
 const providerRouter = express.Router();
 
-providerRouter.get('/providers/', getAllProviders);
-providerRouter.post('/providers', createProvider);
-providerRouter.patch('/providers/:id', updateProvider);
-providerRouter.delete('/providers/:id', deleteProvider);
-providerRouter.get('/providers/:id', getProviderById);
+providerRouter.get('/providers/', tokenAuthentication('admin'), getAllProviders);
+providerRouter.post('/providers', tokenAuthentication('admin'), createProvider);
+providerRouter.patch('/providers/:id', tokenAuthentication('admin'), tokenAuthentication('provider'), updateProvider);
+providerRouter.delete('/providers/:id', tokenAuthentication('admin'), tokenAuthentication('provider'), deleteProvider);
+providerRouter.get('/providers/:id', tokenAuthentication('admin'), getProviderById);
 
 export default providerRouter;

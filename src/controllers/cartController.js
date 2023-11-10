@@ -1,6 +1,5 @@
 import Cart from '../models/cart.js';
-import Client from '../models/client.js';
-import Product from '../models/product.js';
+import Sale from '../models/sale.js';
 
 export const getAllCarts = async (req, res) => {
   try {
@@ -30,14 +29,19 @@ export const getCartById = async (req, res) => {
 };
 
 export const deleteCart = async (req, res) => {
-  const { id } = req.params;
+  const cartId = req.params.id;
   try {
-    await Client.destroy({ where: { id_client: id } });
-    await Product.destroy({ where: { id_product: id } });
-    await Cart.destroy({ where: { id } });
+    await Sale.destroy({ where: { id_cart: cartId }});
 
-    return res.sendStatus(200);
+    const result = await Cart.destroy({
+      where: { id: cartId },
+    });
+    if (result === 0) {
+      return res.status(404).json({ message: 'El carrito no fue encontrado' });
+    }
+    return res.status(200).json({ message: 'Carrito eliminado' });
   } catch (error) {
-    return res.status(500).json({ message: error.message });
+    console.error(error);
+    return res.status(500).json({ message: 'Error al eliminar el carrito y registros relacionados en OtraEntidad' });
   }
 };

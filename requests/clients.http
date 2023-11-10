@@ -9,11 +9,11 @@ Content-Type: application/json
 
 {
   "id": 16,
-  "name": "Emily Davis",
-  "email": "emilydavis@email.com",
-  "telephone": "4221117878",
-  "username": "emilydavis",
-  "password": "davis878"
+  "name": "Maria Ferman",
+  "email": "mariaferman@email.com",
+  "telephone": "4221878117",
+  "username": "mariaferman",
+  "password": "123456fm"
 }
 
 ### Actualizar algunos datos de usuario por id 
@@ -31,8 +31,8 @@ DELETE {{ api }}/clients/16
 GET {{ api }}/carts/
 
 ### Mostrar datos de un carrito
-GET {{ api }}/carts/5
+GET {{ api }}/carts/2
 
 ### borrar carrito
-DELETE {{ api }}/carts/6
+DELETE {{ api }}/carts/8
 

@@ -211,9 +211,6 @@ values (7, 14, 1, 1700.01);
 insert into carts (id_client, id_product, quantity, price)
 values (4, 20, 2, 2258.02);
 
-insert into carts (quantity, price, id_client)
-values (2, 2799.01, 9);
-
 insert into sales (id_admin, id_cart, total)
 values (2, 1, 20800.01);
 insert into sales (id_admin, id_cart, total)

@@ -7,19 +7,16 @@ import {
     getUserById, 
     getUserNameById
 } from '../controllers/userController.js';
-
-import authenticate from '../middlewares/authenticate.js';
+import tokenAuthentication from '../middlewares/tokenAuthentication.js';
 
 const userRouter = express.Router();
 
-userRouter.get('/users/', getAllUsers); // Obtener todos los usuarios
-userRouter.post('/users', createUser); // Crear un nuevo usuario
-userRouter.put('/users/:id', updateUser); // Actualizar un usuario
-userRouter.delete('/users/:id', deleteUser); // Eliminar un usuario
+userRouter.get('/users/', tokenAuthentication('admin'), getAllUsers); // Obtener todos los usuarios
+userRouter.post('/users', tokenAuthentication('admin'), createUser); // Crear un nuevo usuario
+userRouter.put('/users/:id', tokenAuthentication('admin'), updateUser); // Actualizar un usuario
+userRouter.delete('/users/:id', tokenAuthentication('admin'), deleteUser); // Eliminar un usuario
 
-userRouter.get('/users/:id', getUserById); // Obtener un usuario por ID
-userRouter.get('/users/:id/name', getUserNameById); // Obtener nombre de usuario por ID
-
-userRouter.post('/users/auth', authenticate);
+userRouter.get('/users/:id', tokenAuthentication('admin'), getUserById); // Obtener un usuario por ID
+userRouter.get('/users/:id/name', tokenAuthentication('admin'), getUserNameById); // Obtener nombre de usuario por ID
 
 export default userRouter;
