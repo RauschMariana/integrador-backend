@@ -10,7 +10,7 @@ import tokenAuthentication from '../middlewares/tokenAuthentication.js';
 
 const adminRouter = express.Router();
 
-adminRouter.get('/admins', tokenAuthentication('admin'), getAllAdmins);
+adminRouter.get('/admins', tokenAuthentication('admin'), tokenAuthentication('provider'), tokenAuthentication('client'), getAllAdmins);
 adminRouter.post('/admins', tokenAuthentication('admin'), createAdmin);
 adminRouter.patch('/admins/:id', tokenAuthentication('admin'), updateAdmin);
 adminRouter.delete('/admins/:id', tokenAuthentication('admin'), deleteAdmin);
